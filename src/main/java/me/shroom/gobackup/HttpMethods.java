@@ -6,7 +6,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Paths;
-import java.time.Duration;
 
 public class HttpMethods {
     // I know some Java expert is going to shoot me for this, but I am mainly a JS dev, and I love my beloved single-line fetch() function.
@@ -44,7 +43,6 @@ public class HttpMethods {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://" + server + ".gofile.io/uploadFile"))
                     .header("Content-Type", "multipart/form-data; boundary=" + publisher.getBoundary())
-                    .timeout(Duration.ofMinutes(1))
                     .POST(publisher.build())
                     .build();
 
