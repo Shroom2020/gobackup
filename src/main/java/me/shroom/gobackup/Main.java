@@ -374,7 +374,7 @@ public class Main implements ModInitializer {
 			infoIfProgressEnabled("Autosaving is enabled again!");
 
 			// Now, we need to delete the intermediary file here.
-			log.info("Deleting local intermediary file...");
+			infoIfProgressEnabled("Deleting local intermediary file...");
 			try {
 				if (new File("backup-send-intermediary/" + formattedDate + ".zip").delete())
 					infoIfProgressEnabled("Deleted local intermediary file!");
@@ -392,7 +392,7 @@ public class Main implements ModInitializer {
 				infoIfProgressEnabled("Checking if there are too many backups...");
 				HttpResponse<String> getBackupsResponse = HttpMethods.fetch("https://api.gofile.io/getContent?token=" + GOFILE_API_KEY + "&contentId=" + destinationFolder, "GET", "");
 				assert getBackupsResponse != null;
-				log.info(getBackupsResponse.body());
+				infoIfProgressEnabled(getBackupsResponse.body());
 				JsonObject getBackupsResponseJson = gson.fromJson(getBackupsResponse.body(), JsonObject.class);
 				assert getBackupsResponseJson != null;
 
